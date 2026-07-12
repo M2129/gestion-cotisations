@@ -7,12 +7,12 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   body { font-family: -apple-system, Arial, sans-serif; background:#f3f2ee; }
-  .app { max-width: 480px; margin: 0 auto; min-height: 100vh; background:#fff; }
+  .app { max-width: 480px; margin: 0 auto; min-height: 100vh; background:#fff; } @media (min-width:768px){ .app{ max-width:720px; } } @media (min-width:1024px){ .app{ max-width:960px; } }
   .week { width:32px; height:32px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:10px; }
 </style>
 </head>
 <body>
-<div class="app pb-20">
+<div class="app pb-20 md:pb-8">
 
   <header class="bg-gray-900 text-white p-4 sticky top-0 z-10 flex justify-between items-center">
     <div>
@@ -100,7 +100,7 @@
     </div>
   </section>
 
-  <nav class="fixed bottom-0 left-0 right-0 max-w-[480px] mx-auto bg-white border-t flex justify-around py-2 text-[11px] text-gray-500">
+  <nav class="fixed md:static bottom-0 left-0 right-0 max-w-[480px] md:max-w-none mx-auto bg-white border-t md:border-t-0 md:border-b flex justify-around md:justify-start md:gap-8 py-2 md:py-3 text-[11px] md:text-sm text-gray-500">
     <span class="text-gray-900 font-medium">Dashboard</span>
     <span>Historique</span>
     <span>Notifications</span>

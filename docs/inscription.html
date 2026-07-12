@@ -7,11 +7,11 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   body { font-family: -apple-system, Arial, sans-serif; background:#f3f2ee; }
-  .app { max-width: 480px; margin: 0 auto; min-height: 100vh; background:#fff; }
+  .app { max-width: 480px; margin: 0 auto; min-height: 100vh; background:#fff; } @media (min-width:768px){ .app{ max-width:720px; } } @media (min-width:1024px){ .app{ max-width:960px; } }
 </style>
 </head>
 <body>
-<div class="app px-6 py-8">
+<div class="app px-6 py-8 max-w-sm md:max-w-sm mx-auto">
 
   <div class="flex items-center mb-6">
     <span class="mr-2 text-gray-500">&larr;</span>
