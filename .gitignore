@@ -1,0 +1,13 @@
+# Environnement local
+.vscode/
+.idea/
+.DS_Store
+*.log
+
+# Dépendances (si Composer est ajouté plus tard)
+vendor/
+composer.lock
+
+# Fichiers temporaires
+*.tmp
+*.cache
