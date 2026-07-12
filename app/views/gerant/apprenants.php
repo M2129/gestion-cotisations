@@ -1,4 +1,4 @@
-<div class="p-4">
+<div class="p-4 md:p-8 max-w-2xl md:mx-auto">
   <h1 class="font-bold text-base mb-4">Gestion des apprenants</h1>
 
   <details class="mb-4 border rounded-lg p-3">

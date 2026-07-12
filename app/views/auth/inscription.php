@@ -1,4 +1,4 @@
-<div class="px-6 py-8">
+<div class="max-w-sm mx-auto px-6 py-8">
 
   <div class="flex items-center mb-6">
     <a href="/login" class="mr-2 text-gray-500">&larr;</a>

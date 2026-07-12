@@ -1,4 +1,4 @@
-<div class="p-4">
+<div class="p-4 md:p-8 max-w-md md:mx-auto">
   <div class="flex items-center mb-4">
     <a href="/gerant/dashboard" class="mr-2 text-gray-500">&larr;</a>
     <h1 class="font-bold text-base">Nouveau paiement</h1>

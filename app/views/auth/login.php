@@ -1,4 +1,4 @@
-<div class="flex flex-col justify-center px-6" style="min-height:90vh">
+<div class="max-w-sm mx-auto flex flex-col justify-center px-6" style="min-height:90vh">
 
   <div class="text-center mb-8">
     <div class="w-14 h-14 bg-gray-900 rounded-xl mx-auto mb-3 flex items-center justify-center text-white font-bold text-xl">C</div>
