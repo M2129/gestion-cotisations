@@ -6,7 +6,7 @@
 <title>Connexion - Gestion des Cotisations</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-  body { font-family: -apple-system, Arial, sans-serif; background:#f3f2ee; }
+  html { scroll-behavior: smooth; } body { font-family: -apple-system, Arial, sans-serif; background:#f3f2ee; }
   .app { max-width: 480px; margin: 0 auto; min-height: 100vh; background:#fff; } @media (min-width:768px){ .app{ max-width:720px; } } @media (min-width:1024px){ .app{ max-width:960px; } }
 </style>
 </head>
@@ -36,16 +36,21 @@
       <span class="text-gray-700">Mot de passe oublié ?</span>
     </div>
 
-    <button type="button" class="w-full bg-gray-900 text-white rounded-lg py-2.5 text-sm font-medium mt-2">Se connecter</button>
+    <a href="gerant.html" class="block w-full bg-gray-900 text-white text-center rounded-lg py-2.5 text-sm font-medium mt-2">Se connecter</a>
   </form>
 
-  <div class="text-xs text-red-600 bg-red-50 rounded-lg p-3 mt-4">
-    Identifiants incorrects. Veuillez réessayer.
-  </div>
-
   <p class="text-center text-sm text-gray-500 mt-6">
-    Pas encore inscrit ? <span class="text-gray-900 font-medium">Créer un compte</span>
+    Pas encore inscrit ? <a href="inscription.html" class="text-gray-900 font-medium">Créer un compte</a>
   </p>
+
+  <div class="border-t mt-8 pt-4">
+    <p class="text-[11px] text-gray-400 text-center mb-2">Prototype - accès direct par profil</p>
+    <div class="flex gap-2">
+      <a href="gerant.html" class="flex-1 border rounded-lg py-2 text-xs text-center hover:bg-gray-50">Gérant</a>
+      <a href="apprenant.html" class="flex-1 border rounded-lg py-2 text-xs text-center hover:bg-gray-50">Apprenant</a>
+      <a href="coach.html" class="flex-1 border rounded-lg py-2 text-xs text-center hover:bg-gray-50">Coach</a>
+    </div>
+  </div>
 
   <p class="text-center text-[11px] text-gray-400 mt-8">
     Formation Web Full-Stack · Coaching ALY / Thiam

@@ -6,7 +6,7 @@
 <title>Gérant - Gestion des Cotisations</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-  body { font-family: -apple-system, Arial, sans-serif; background:#f3f2ee; }
+  html { scroll-behavior: smooth; } body { font-family: -apple-system, Arial, sans-serif; background:#f3f2ee; }
   .app { max-width: 480px; margin: 0 auto; min-height: 100vh; background:#fff; } @media (min-width:768px){ .app{ max-width:720px; } } @media (min-width:1024px){ .app{ max-width:960px; } }
   .grid-week { display:grid; grid-template-columns: 90px repeat(6, 34px); }
   .cell { display:flex; align-items:center; justify-content:center; height:34px; font-size:11px; } @media (min-width:768px){ .grid-week{ grid-template-columns: 140px repeat(6, 56px);} .cell{ height:44px; font-size:13px; } }
@@ -19,13 +19,13 @@
 <div class="app pb-20 md:pb-8">
 
   <!-- Header -->
-  <header class="bg-gray-900 text-white p-4 sticky top-0 z-10">
+  <header class="bg-gray-900 text-white p-4 sticky top-0 z-10" id="dashboard">
     <div class="flex justify-between items-center">
       <div>
         <div class="text-xs text-gray-400">Espace Gérant</div>
         <div class="font-bold text-lg">Cotisations P8</div>
       </div>
-      <button class="border border-gray-600 rounded px-3 py-1 text-xs">Compte</button>
+      <a href="index.html" class="border border-gray-600 rounded px-3 py-1 text-xs">Déconnexion</a>
     </div>
   </header>
 
@@ -47,7 +47,7 @@
   </section>
 
   <!-- Tableau croisé interactif -->
-  <section class="px-4">
+  <section class="px-4 scroll-mt-20" id="apprenants">
     <div class="flex justify-between items-center mb-2">
       <h2 class="font-bold text-sm">Tableau croisé - semaines 13 à 18</h2>
       <span class="text-xs text-gray-400">&larr; glisser &rarr;</span>
@@ -91,7 +91,7 @@
   </section>
 
   <!-- Formulaire saisie paiement -->
-  <section class="p-4 mt-4 border-t">
+  <section class="p-4 mt-4 border-t scroll-mt-20" id="campagnes">
     <h2 class="font-bold text-sm mb-3">Enregistrer un paiement</h2>
     <form class="space-y-3">
       <div>
@@ -123,16 +123,16 @@
       <div class="bg-blue-50 rounded-lg p-3 text-xs text-blue-800">
         Ventilation prévue : semaines S16 et S17 seront marquées payées. Reliquat : 0 FCFA.
       </div>
-      <button type="button" class="w-full bg-gray-900 text-white rounded-lg py-2.5 text-sm font-medium">Valider le paiement</button>
+      <a href="#dashboard" class="block w-full bg-gray-900 text-white text-center rounded-lg py-2.5 text-sm font-medium">Valider le paiement</a>
     </form>
   </section>
 
   <!-- Bottom nav -->
   <nav class="fixed md:static bottom-0 left-0 right-0 max-w-[480px] md:max-w-none mx-auto bg-white border-t md:border-t-0 md:border-b flex justify-around md:justify-start md:gap-8 py-2 md:py-3 text-[11px] md:text-sm text-gray-500">
-    <span class="text-gray-900 font-medium">Dashboard</span>
-    <span>Apprenants</span>
-    <span>Campagnes</span>
-    <span>Compte</span>
+    <a href="#dashboard" class="text-gray-900 font-medium">Dashboard</a>
+    <a href="#apprenants">Apprenants</a>
+    <a href="#campagnes">Campagnes</a>
+    <a href="index.html">Compte</a>
   </nav>
 
 </div>

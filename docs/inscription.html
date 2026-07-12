@@ -6,7 +6,7 @@
 <title>Inscription - Gestion des Cotisations</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-  body { font-family: -apple-system, Arial, sans-serif; background:#f3f2ee; }
+  html { scroll-behavior: smooth; } body { font-family: -apple-system, Arial, sans-serif; background:#f3f2ee; }
   .app { max-width: 480px; margin: 0 auto; min-height: 100vh; background:#fff; } @media (min-width:768px){ .app{ max-width:720px; } } @media (min-width:1024px){ .app{ max-width:960px; } }
 </style>
 </head>
@@ -14,7 +14,7 @@
 <div class="app px-6 py-8 max-w-sm md:max-w-sm mx-auto">
 
   <div class="flex items-center mb-6">
-    <span class="mr-2 text-gray-500">&larr;</span>
+    <a href="index.html" class="mr-2 text-gray-500">&larr;</a>
     <h1 class="font-bold text-lg">Créer un compte</h1>
   </div>
 
@@ -53,11 +53,11 @@
       J'accepte de participer aux cotisations hebdomadaires et ponctuelles de la classe.
     </label>
 
-    <button type="button" class="w-full bg-gray-900 text-white rounded-lg py-2.5 text-sm font-medium mt-2">Créer mon compte</button>
+    <a href="apprenant.html" class="block w-full bg-gray-900 text-white text-center rounded-lg py-2.5 text-sm font-medium mt-2">Créer mon compte</a>
   </form>
 
   <p class="text-center text-sm text-gray-500 mt-6">
-    Déjà inscrit ? <span class="text-gray-900 font-medium">Se connecter</span>
+    Déjà inscrit ? <a href="index.html" class="text-gray-900 font-medium">Se connecter</a>
   </p>
 
   <div class="border-t mt-8 pt-4">

@@ -6,7 +6,7 @@
 <title>Apprenant - Gestion des Cotisations</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-  body { font-family: -apple-system, Arial, sans-serif; background:#f3f2ee; }
+  html { scroll-behavior: smooth; } body { font-family: -apple-system, Arial, sans-serif; background:#f3f2ee; }
   .app { max-width: 480px; margin: 0 auto; min-height: 100vh; background:#fff; } @media (min-width:768px){ .app{ max-width:720px; } } @media (min-width:1024px){ .app{ max-width:960px; } }
   .week { width:32px; height:32px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:10px; }
 </style>
@@ -14,19 +14,22 @@
 <body>
 <div class="app pb-20 md:pb-8">
 
-  <header class="bg-gray-900 text-white p-4 sticky top-0 z-10 flex justify-between items-center">
+  <header class="bg-gray-900 text-white p-4 sticky top-0 z-10 flex justify-between items-center" id="dashboard">
     <div>
       <div class="text-xs text-gray-400">Espace Apprenant</div>
       <div class="font-bold text-lg">Bonjour, Mamadou</div>
     </div>
-    <div class="relative">
-      <span class="text-lg">🔔</span>
-      <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[9px] rounded-full w-4 h-4 flex items-center justify-center">2</span>
+    <div class="flex items-center gap-3">
+      <div class="relative">
+        <span class="text-lg">🔔</span>
+        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[9px] rounded-full w-4 h-4 flex items-center justify-center">2</span>
+      </div>
+      <a href="index.html" class="text-xs border border-gray-600 rounded px-2 py-1">Déconnexion</a>
     </div>
   </header>
 
   <!-- Statut cotisation -->
-  <section class="p-4">
+  <section class="p-4" id="statut">
     <div class="bg-gray-900 text-white rounded-xl p-4">
       <div class="text-xs text-gray-300">Statut cotisation hebdomadaire</div>
       <div class="font-bold text-xl mt-1">À jour</div>
@@ -67,7 +70,7 @@
   </section>
 
   <!-- Historique des paiements -->
-  <section class="px-4 mb-4">
+  <section class="px-4 mb-4 scroll-mt-20" id="historique">
     <h2 class="font-bold text-sm mb-2">Historique des paiements</h2>
     <div class="border rounded-lg divide-y text-sm">
       <div class="flex justify-between px-3 py-2">
@@ -88,7 +91,7 @@
   </section>
 
   <!-- Notifications -->
-  <section class="px-4">
+  <section class="px-4 scroll-mt-20" id="notifications">
     <h2 class="font-bold text-sm mb-2">Notifications</h2>
     <div class="space-y-2">
       <div class="border-l-4 border-amber-500 bg-amber-50 rounded-r-lg p-3 text-xs">
@@ -101,10 +104,10 @@
   </section>
 
   <nav class="fixed md:static bottom-0 left-0 right-0 max-w-[480px] md:max-w-none mx-auto bg-white border-t md:border-t-0 md:border-b flex justify-around md:justify-start md:gap-8 py-2 md:py-3 text-[11px] md:text-sm text-gray-500">
-    <span class="text-gray-900 font-medium">Dashboard</span>
-    <span>Historique</span>
-    <span>Notifications</span>
-    <span>Compte</span>
+    <a href="#dashboard" class="text-gray-900 font-medium">Dashboard</a>
+    <a href="#historique">Historique</a>
+    <a href="#notifications">Notifications</a>
+    <a href="index.html">Compte</a>
   </nav>
 
 </div>

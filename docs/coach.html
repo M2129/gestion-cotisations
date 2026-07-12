@@ -6,7 +6,7 @@
 <title>Coach Superviseur - Gestion des Cotisations</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-  body { font-family: -apple-system, Arial, sans-serif; background:#f3f2ee; }
+  html { scroll-behavior: smooth; } body { font-family: -apple-system, Arial, sans-serif; background:#f3f2ee; }
   .app { max-width: 480px; margin: 0 auto; min-height: 100vh; background:#fff; } @media (min-width:768px){ .app{ max-width:720px; } } @media (min-width:1024px){ .app{ max-width:960px; } }
   .bar-track { background:#f1efe8; border-radius:6px; height:8px; overflow:hidden; }
   .bar-fill { background:#639922; height:100%; }
@@ -15,13 +15,16 @@
 <body>
 <div class="app pb-20 md:pb-8">
 
-  <header class="bg-gray-900 text-white p-4 sticky top-0 z-10">
+  <header class="bg-gray-900 text-white p-4 sticky top-0 z-10" id="dashboard">
     <div class="flex justify-between items-center">
       <div>
         <div class="text-xs text-gray-400">Espace Coach</div>
         <div class="font-bold text-lg">Audit - Cohorte P8</div>
       </div>
-      <span class="text-[10px] border border-gray-600 rounded px-2 py-1">Lecture seule</span>
+      <div class="flex items-center gap-2">
+        <span class="text-[10px] border border-gray-600 rounded px-2 py-1">Lecture seule</span>
+        <a href="index.html" class="text-[10px] border border-gray-600 rounded px-2 py-1">Déconnexion</a>
+      </div>
     </div>
   </header>
 
@@ -48,7 +51,7 @@
   </section>
 
   <!-- Activité du gérant -->
-  <section class="px-4 mb-4">
+  <section class="px-4 mb-4 scroll-mt-20" id="statistiques">
     <h2 class="font-bold text-sm mb-2">Activité du Gérant</h2>
     <div class="border rounded-lg divide-y text-sm">
       <div class="flex justify-between px-3 py-2">
@@ -86,7 +89,7 @@
   </section>
 
   <!-- Tableau croisé en lecture seule -->
-  <section class="px-4">
+  <section class="px-4 scroll-mt-20" id="historique">
     <h2 class="font-bold text-sm mb-2">Suivi hebdomadaire (lecture seule)</h2>
     <div class="border rounded-lg overflow-x-auto">
       <table class="w-full text-xs text-center">
@@ -103,9 +106,9 @@
   </section>
 
   <nav class="fixed md:static bottom-0 left-0 right-0 max-w-[480px] md:max-w-none mx-auto bg-white border-t md:border-t-0 md:border-b flex justify-around md:justify-start md:gap-8 py-2 md:py-3 text-[11px] md:text-sm text-gray-500">
-    <span class="text-gray-900 font-medium">Dashboard</span>
-    <span>Statistiques</span>
-    <span>Historique</span>
+    <a href="#dashboard" class="text-gray-900 font-medium">Dashboard</a>
+    <a href="#statistiques">Statistiques</a>
+    <a href="#historique">Historique</a>
   </nav>
 
 </div>
