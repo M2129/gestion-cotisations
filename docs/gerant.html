@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gérant - Gestion des Cotisations</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: -apple-system, Arial, sans-serif; background:#f3f2ee; }
+  .app { max-width: 480px; margin: 0 auto; min-height: 100vh; background:#fff; }
+  .grid-week { display:grid; grid-template-columns: 90px repeat(6, 34px); }
+  .cell { display:flex; align-items:center; justify-content:center; height:34px; font-size:11px; }
+  .paid { background:#c0dd97; color:#173404; }
+  .late { background:#f09595; color:#501313; }
+  .pending { background:#f1efe8; color:#5f5e5a; }
+</style>
+</head>
+<body>
+<div class="app pb-20">
+
+  <!-- Header -->
+  <header class="bg-gray-900 text-white p-4 sticky top-0 z-10">
+    <div class="flex justify-between items-center">
+      <div>
+        <div class="text-xs text-gray-400">Espace Gérant</div>
+        <div class="font-bold text-lg">Cotisations P8</div>
+      </div>
+      <button class="border border-gray-600 rounded px-3 py-1 text-xs">Compte</button>
+    </div>
+  </header>
+
+  <!-- Stats -->
+  <section class="p-4 grid grid-cols-3 gap-2">
+    <div class="bg-gray-50 rounded-lg p-3 text-center">
+      <div class="text-[11px] text-gray-500">Collecté</div>
+      <div class="font-bold text-sm">450 000</div>
+      <div class="text-[10px] text-gray-400">FCFA</div>
+    </div>
+    <div class="bg-gray-50 rounded-lg p-3 text-center">
+      <div class="text-[11px] text-gray-500">Apprenants</div>
+      <div class="font-bold text-sm">32</div>
+    </div>
+    <div class="bg-red-50 rounded-lg p-3 text-center">
+      <div class="text-[11px] text-red-600">En retard</div>
+      <div class="font-bold text-sm text-red-600">7</div>
+    </div>
+  </section>
+
+  <!-- Tableau croisé interactif -->
+  <section class="px-4">
+    <div class="flex justify-between items-center mb-2">
+      <h2 class="font-bold text-sm">Tableau croisé - semaines 13 à 18</h2>
+      <span class="text-xs text-gray-400">&larr; glisser &rarr;</span>
+    </div>
+    <div class="overflow-x-auto border rounded-lg">
+      <div class="grid-week bg-gray-100 border-b">
+        <div class="cell font-bold text-left pl-2">Apprenant</div>
+        <div class="cell font-bold">S13</div>
+        <div class="cell font-bold">S14</div>
+        <div class="cell font-bold">S15</div>
+        <div class="cell font-bold">S16</div>
+        <div class="cell font-bold">S17</div>
+        <div class="cell font-bold">S18</div>
+      </div>
+      <div class="grid-week border-b">
+        <div class="cell text-left pl-2 truncate">Mamadou N.</div>
+        <div class="cell paid">✓</div><div class="cell paid">✓</div><div class="cell paid">✓</div>
+        <div class="cell paid">✓</div><div class="cell paid">✓</div><div class="cell pending">·</div>
+      </div>
+      <div class="grid-week border-b">
+        <div class="cell text-left pl-2 truncate">Aissatou B.</div>
+        <div class="cell paid">✓</div><div class="cell paid">✓</div><div class="cell paid">✓</div>
+        <div class="cell paid">✓</div><div class="cell paid">✓</div><div class="cell pending">·</div>
+      </div>
+      <div class="grid-week border-b">
+        <div class="cell text-left pl-2 truncate">Ismaïla S.</div>
+        <div class="cell paid">✓</div><div class="cell paid">✓</div><div class="cell late">✗</div>
+        <div class="cell late">✗</div><div class="cell pending">·</div><div class="cell pending">·</div>
+      </div>
+      <div class="grid-week">
+        <div class="cell text-left pl-2 truncate">Sadio D.</div>
+        <div class="cell paid">✓</div><div class="cell late">✗</div><div class="cell late">✗</div>
+        <div class="cell pending">·</div><div class="cell pending">·</div><div class="cell pending">·</div>
+      </div>
+    </div>
+    <div class="flex gap-3 mt-2 text-[11px] text-gray-500">
+      <span><span class="inline-block w-3 h-3 bg-green-500 rounded-sm align-middle mr-1"></span>Payé</span>
+      <span><span class="inline-block w-3 h-3 bg-red-500 rounded-sm align-middle mr-1"></span>Retard</span>
+      <span><span class="inline-block w-3 h-3 bg-gray-200 rounded-sm align-middle mr-1"></span>À venir</span>
+    </div>
+  </section>
+
+  <!-- Formulaire saisie paiement -->
+  <section class="p-4 mt-4 border-t">
+    <h2 class="font-bold text-sm mb-3">Enregistrer un paiement</h2>
+    <form class="space-y-3">
+      <div>
+        <label class="text-xs text-gray-500 block mb-1">Apprenant</label>
+        <select class="w-full border rounded-lg px-3 py-2 text-sm">
+          <option>Ismaïla Sarr F.</option>
+          <option>Sadio Diallo</option>
+          <option>Mamadou Ndiaye</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-xs text-gray-500 block mb-1">Montant versé (FCFA)</label>
+        <input type="number" value="10000" class="w-full border rounded-lg px-3 py-2 text-sm">
+      </div>
+      <div>
+        <label class="text-xs text-gray-500 block mb-1">Cible du paiement</label>
+        <div class="space-y-2">
+          <label class="flex items-center gap-2 border rounded-lg px-3 py-2 text-sm bg-gray-50">
+            <input type="radio" name="cible" checked> Cotisations hebdomadaires (ventilation auto)
+          </label>
+          <label class="flex items-center gap-2 border rounded-lg px-3 py-2 text-sm">
+            <input type="radio" name="cible"> Cotisation anniversaire du mois
+          </label>
+          <label class="flex items-center gap-2 border rounded-lg px-3 py-2 text-sm">
+            <input type="radio" name="cible"> Don libre - Campagne décès
+          </label>
+        </div>
+      </div>
+      <div class="bg-blue-50 rounded-lg p-3 text-xs text-blue-800">
+        Ventilation prévue : semaines S16 et S17 seront marquées payées. Reliquat : 0 FCFA.
+      </div>
+      <button type="button" class="w-full bg-gray-900 text-white rounded-lg py-2.5 text-sm font-medium">Valider le paiement</button>
+    </form>
+  </section>
+
+  <!-- Bottom nav -->
+  <nav class="fixed bottom-0 left-0 right-0 max-w-[480px] mx-auto bg-white border-t flex justify-around py-2 text-[11px] text-gray-500">
+    <span class="text-gray-900 font-medium">Dashboard</span>
+    <span>Apprenants</span>
+    <span>Campagnes</span>
+    <span>Compte</span>
+  </nav>
+
+</div>
+</body>
+</html>

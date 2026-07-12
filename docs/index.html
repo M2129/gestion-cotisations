@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connexion - Gestion des Cotisations</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: -apple-system, Arial, sans-serif; background:#f3f2ee; }
+  .app { max-width: 480px; margin: 0 auto; min-height: 100vh; background:#fff; }
+</style>
+</head>
+<body>
+<div class="app flex flex-col justify-center px-6" style="min-height:100vh">
+
+  <div class="text-center mb-8">
+    <div class="w-14 h-14 bg-gray-900 rounded-xl mx-auto mb-3 flex items-center justify-center text-white font-bold text-xl">C</div>
+    <h1 class="font-bold text-xl">Gestion des Cotisations</h1>
+    <p class="text-sm text-gray-500 mt-1">Cohorte P8 - ODC Sonatel Academy</p>
+  </div>
+
+  <form class="space-y-3">
+    <div>
+      <label class="text-xs text-gray-500 block mb-1">Email</label>
+      <input type="email" placeholder="nom@exemple.com" class="w-full border rounded-lg px-3 py-2.5 text-sm">
+    </div>
+    <div>
+      <label class="text-xs text-gray-500 block mb-1">Mot de passe</label>
+      <input type="password" placeholder="••••••••" class="w-full border rounded-lg px-3 py-2.5 text-sm">
+    </div>
+
+    <div class="flex justify-between items-center text-xs text-gray-500 pt-1">
+      <label class="flex items-center gap-1.5">
+        <input type="checkbox"> Se souvenir de moi
+      </label>
+      <span class="text-gray-700">Mot de passe oublié ?</span>
+    </div>
+
+    <button type="button" class="w-full bg-gray-900 text-white rounded-lg py-2.5 text-sm font-medium mt-2">Se connecter</button>
+  </form>
+
+  <div class="text-xs text-red-600 bg-red-50 rounded-lg p-3 mt-4">
+    Identifiants incorrects. Veuillez réessayer.
+  </div>
+
+  <p class="text-center text-sm text-gray-500 mt-6">
+    Pas encore inscrit ? <span class="text-gray-900 font-medium">Créer un compte</span>
+  </p>
+
+  <p class="text-center text-[11px] text-gray-400 mt-8">
+    Formation Web Full-Stack · Coaching ALY / Thiam
+  </p>
+
+</div>
+</body>
+</html>
