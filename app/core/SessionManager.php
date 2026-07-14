@@ -72,6 +72,30 @@ class SessionManager
             && hash_equals(self::get('csrf_token'), $token);
     }
 
+    /** Alias public pour démarrer la session. */
+    public static function startSession(): void
+    {
+        self::demarrer();
+    }
+
+    /** Alias public pour sauvegarder une donnée en session. */
+    public static function save(string $key, $data): void
+    {
+        self::set($key, $data);
+    }
+
+    /** Alias public pour récupérer une donnée en session. */
+    public static function getData(string $key, $default = null)
+    {
+        return self::get($key, $default);
+    }
+
+    /** Alias public pour supprimer une donnée en session. */
+    public static function removeData(string $key): void
+    {
+        self::remove($key);
+    }
+
     public static function detruire(): void
     {
         $_SESSION = [];

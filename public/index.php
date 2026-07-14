@@ -23,7 +23,7 @@ $routeur->ajouter('GET',  '/gerant/apprenants',        'GerantController', 'appr
 $routeur->ajouter('POST', '/gerant/apprenants',        'GerantController', 'apprenants');
 
 // Apprenant et Coach : à brancher en Incréments 2 et 3
-// $routeur->ajouter('GET', '/apprenant/dashboard', 'ApprenantController', 'dashboard');
-// $routeur->ajouter('GET', '/coach/dashboard',     'CoachController', 'dashboard');
+ $routeur->ajouter('GET', '/apprenant/dashboard', 'ApprenantController', 'dashboard');
+ $routeur->ajouter('GET', '/coach/dashboard',     'CoachController', 'dashboard');
 
 $routeur->dispatch();

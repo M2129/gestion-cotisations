@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../core/Controleur.php';
+require_once __DIR__ . '/../core/Validator.php';
 require_once __DIR__ . '/../models/ApprenantModel.php';
 
 class AuthController extends Controleur
@@ -80,19 +81,19 @@ class AuthController extends Controleur
     /** Centralise toutes les règles de validation du formulaire d'inscription */
     private function validerInscription(string $prenom, string $nom, ?string $email, string $motDePasse, string $confirmation): ?string
     {
-        if (empty($prenom) || empty($nom)) {
+        if (!Validator::required($prenom) || !Validator::required($nom)) {
             return 'Le prénom et le nom sont obligatoires.';
         }
-        if (!$email) {
+        if (!$email || !Validator::isEmail($email)) {
             return 'Adresse email invalide.';
         }
-        if (strlen($motDePasse) < self::MOT_DE_PASSE_MIN) {
+        if (!Validator::isPassword($motDePasse, self::MOT_DE_PASSE_MIN)) {
             return 'Le mot de passe doit contenir au moins ' . self::MOT_DE_PASSE_MIN . ' caractères.';
         }
         if ($motDePasse !== $confirmation) {
             return 'La confirmation du mot de passe ne correspond pas.';
         }
-        if ($this->apprenantModel->getParEmail($email)) {
+        if (!Validator::unique($email, fn(string $value) => (bool) $this->apprenantModel->getParEmail($value))) {
             return 'Un compte existe déjà avec cet email.';
         }
         return null;
