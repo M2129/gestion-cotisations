@@ -1,29 +1,50 @@
 <?php
 require_once __DIR__ . '/../app/core/SessionManager.php';
-require_once __DIR__ . '/../app/core/Routeur.php';
+require_once __DIR__ . '/../app/core/procedural_core.php';
+require_once __DIR__ . '/../app/controllers/auth.php';
+require_once __DIR__ . '/../app/controllers/gerant.php';
 
-SessionManager::demarrer();
+startSession();
 
-$routeur = new Routeur();
+$base = str_replace('index.php', '', $_SERVER['SCRIPT_NAME']);
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$chemin = trim(substr($uri, strlen($base)), '/');
+if ($chemin === '') {
+    $chemin = 'login';
+}
 
-// Authentification
-$routeur->ajouter('GET',  '/login',       'AuthController', 'afficherLogin');
-$routeur->ajouter('POST', '/login',       'AuthController', 'traiterLogin');
-$routeur->ajouter('GET',  '/inscription', 'AuthController', 'afficherInscription');
-$routeur->ajouter('POST', '/inscription', 'AuthController', 'traiterInscription');
-$routeur->ajouter('GET',  '/logout',      'AuthController', 'deconnexion');
+$methodeHttp = $_SERVER['REQUEST_METHOD'];
 
-// Gérant (Incrément 1)
-$routeur->ajouter('GET',  '/gerant/dashboard',        'GerantController', 'dashboard');
-$routeur->ajouter('GET',  '/gerant/paiements/create',  'GerantController', 'afficherFormulairePaiement');
-$routeur->ajouter('POST', '/gerant/paiements/create',  'GerantController', 'enregistrerPaiement');
-$routeur->ajouter('GET',  '/gerant/campagnes/create',  'GerantController', 'afficherFormulaireCampagne');
-$routeur->ajouter('POST', '/gerant/campagnes/create',  'GerantController', 'enregistrerCampagne');
-$routeur->ajouter('GET',  '/gerant/apprenants',        'GerantController', 'apprenants');
-$routeur->ajouter('POST', '/gerant/apprenants',        'GerantController', 'apprenants');
+$routes = [
+    'GET' => [
+        'login'                   => 'afficherLogin',
+        'inscription'             => 'afficherInscription',
+        'logout'                  => 'deconnexion',
+        'gerant/dashboard'        => 'dashboard',
+        'gerant/paiements/create' => 'afficherFormulairePaiement',
+        'gerant/campagnes/create' => 'afficherFormulaireCampagne',
+        'gerant/apprenants'       => 'apprenants',
+    ],
+    'POST' => [
+        'login'                   => 'traiterLogin',
+        'inscription'             => 'traiterInscription',
+        'gerant/paiements/create' => 'enregistrerPaiement',
+        'gerant/campagnes/create' => 'enregistrerCampagne',
+        'gerant/apprenants'       => 'apprenants',
+    ],
+];
 
-// Apprenant et Coach : à brancher en Incréments 2 et 3
- $routeur->ajouter('GET', '/apprenant/dashboard', 'ApprenantController', 'dashboard');
- $routeur->ajouter('GET', '/coach/dashboard',     'CoachController', 'dashboard');
+if (!isset($routes[$methodeHttp][$chemin])) {
+    http_response_code(404);
+    echo "Page introuvable : /{$chemin}";
+    exit;
+}
 
-$routeur->dispatch();
+$action = $routes[$methodeHttp][$chemin];
+if (!function_exists($action)) {
+    http_response_code(500);
+    echo "Action introuvable : {$action}";
+    exit;
+}
+
+$action();
