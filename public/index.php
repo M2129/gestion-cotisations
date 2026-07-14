@@ -6,14 +6,25 @@ require_once __DIR__ . '/../app/controllers/gerant.php';
 
 startSession();
 
-$base = str_replace('index.php', '', $_SERVER['SCRIPT_NAME']);
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$chemin = trim(substr($uri, strlen($base)), '/');
+$scriptName = $_SERVER['SCRIPT_NAME'] ?? '';
+$base = str_replace('index.php', '', $scriptName);
+$chemin = trim($uri, '/');
+
+if ($base !== '' && $base !== '/' && strpos($uri, $base) === 0) {
+    $chemin = trim(substr($uri, strlen($base)), '/');
+} elseif (preg_match('#^/index\.php/(.*)$#', $uri, $matches)) {
+    $chemin = trim($matches[1], '/');
+}
+
 if ($chemin === '') {
     $chemin = 'login';
 }
 
 $methodeHttp = $_SERVER['REQUEST_METHOD'];
+if ($methodeHttp === 'HEAD') {
+    $methodeHttp = 'GET';
+}
 
 $routes = [
     'GET' => [
